@@ -2487,6 +2487,8 @@ h1, h2, h3, h4, h5 {
 .social-link.linkedin { background: linear-gradient(135deg, #0077B5, #005582); box-shadow: 0 8px 24px rgba(0,119,181,0.35);}
 .social-link.instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF, #515BD4); box-shadow: 0 8px 24px rgba(228,64,95,0.35);}
 .social-link.facebook { background: linear-gradient(135deg, #1877F2, #0d5bc9); box-shadow: 0 8px 24px rgba(24,119,242,0.35);}
+.social-link.email { background: linear-gradient(135deg, #EA4335, #FBBC04, #34A853, #4285F4); box-shadow: 0 8px 24px rgba(234,67,53,0.35);}
+.social-link.iot { background: linear-gradient(135deg, #ec4899, #8b5cf6); box-shadow: 0 8px 24px rgba(139,92,246,0.35);}
 
 .social-link:hover {
     transform: translateY(-9px) scale(1.1) rotate(-5deg);

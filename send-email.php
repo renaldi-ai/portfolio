@@ -1,6 +1,11 @@
 <?php
 // send-email.php - Handle form submission dengan fallback yang telah diperbaiki
 
+// PHPMailer namespace imports (HARUS di atas file, tidak boleh di dalam blok kondisional)
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 // Include config
 require_once 'config.php';
 
@@ -34,10 +39,6 @@ if (file_exists('PHPMailer/src/PHPMailer.php')) {
         require 'PHPMailer/src/PHPMailer.php';
         require 'PHPMailer/src/SMTP.php';
         require 'PHPMailer/src/Exception.php';
-        
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\SMTP;
-        use PHPMailer\PHPMailer\Exception;
         
         // Create PHPMailer instance
         $mail = new PHPMailer(true);
@@ -163,7 +164,16 @@ if (file_exists('PHPMailer/src/PHPMailer.php')) {
     send_json_response(true, 'Pesan berhasil disimpan! Silakan hubungi langsung via WhatsApp 0895-4063-98540 untuk respon cepat.');
 }
 
-// Function to save contact to file
+/**
+ * Menyimpan data form kontak ke file JSON dan file text (backup fallback)
+ *
+ * @param string $name Nama pengirim pesan
+ * @param string $email Alamat email pengirim pesan
+ * @param string $subject Subjek pesan
+ * @param string $service Jenis layanan yang dipilih
+ * @param string $message Isi pesan dari user
+ * @return void Tidak mengembalikan nilai, hanya write ke filesystem
+ */
 function save_contact_to_file($name, $email, $subject, $service, $message) {
     $data = [
         'timestamp' => date('Y-m-d H:i:s'),

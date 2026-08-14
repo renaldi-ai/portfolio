@@ -85,6 +85,7 @@ function initNavigation() {
         hamburger.addEventListener('click', function() {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
         });
     }
     
@@ -97,7 +98,20 @@ function initNavigation() {
             if (navMenu) {
                 navMenu.classList.remove('active');
             }
+            document.body.classList.remove('nav-open');
         });
+    });
+
+    // Close menu when clicking outside of it
+    document.addEventListener('click', function(e) {
+        if (!navMenu || !navMenu.classList.contains('active')) return;
+        const clickedInsideMenu = navMenu.contains(e.target);
+        const clickedHamburger = hamburger && hamburger.contains(e.target);
+        if (!clickedInsideMenu && !clickedHamburger) {
+            navMenu.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+            document.body.classList.remove('nav-open');
+        }
     });
     
     // Update active nav link on scroll

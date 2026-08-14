@@ -172,7 +172,12 @@ header('X-XSS-Protection: 1; mode=block');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
-// Function untuk sanitize input
+/**
+ * Sanitize input data untuk keamanan (mencegah XSS & SQL Injection)
+ *
+ * @param string|array $data Data yang akan disanitize (string atau array string)
+ * @return string|array Data yang sudah disanitize
+ */
 function sanitize_input($data) {
     if (is_array($data)) {
         return array_map('sanitize_input', $data);
@@ -183,12 +188,24 @@ function sanitize_input($data) {
     return $data;
 }
 
-// Function untuk validate email
+/**
+ * Validasi format email address
+ *
+ * @param string $email Alamat email yang akan divalidasi
+ * @return string|false Email yang difilter jika valid, false jika tidak valid
+ */
 function validate_email($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-// Function untuk send JSON response
+/**
+ * Mengirim JSON response ke client dan menghentikan eksekusi script
+ *
+ * @param bool $success Status keberhasilan operasi (true/false)
+ * @param string $message Pesan deskriptif untuk ditampilkan ke user
+ * @param mixed|null $data Data opsional untuk dikirim bersama response (default: null)
+ * @return void Function ini menghentikan eksekusi dengan exit
+ */
 function send_json_response($success, $message, $data = null) {
     header('Content-Type: application/json');
     $response = [
@@ -204,7 +221,11 @@ function send_json_response($success, $message, $data = null) {
     exit;
 }
 
-// Function cek konfigurasi SMTP
+/**
+ * Memeriksa apakah konfigurasi SMTP sudah diisi dengan benar
+ *
+ * @return array Daftar error (string) jika ada masalah, array kosong jika valid
+ */
 function check_smtp_config() {
     $errors = [];
     

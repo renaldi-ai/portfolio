@@ -1391,6 +1391,12 @@ h1, h2, h3, h4, h5 {
     animation-delay: 2.4s;
 }
 
+.elem-4 {
+    bottom: 8%;
+    right: 12%;
+    animation-delay: 3.2s;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 36px;
@@ -2921,27 +2927,94 @@ h1, h2, h3, h4, h5 {
 
     .nav-menu {
         position: fixed;
-        top: 80px;
-        left: -100%;
-        width: calc(100% - 40px);
-        margin: 0 20px;
-        background: var(--glass-bg);
+        top: 74px;
+        right: 20px;
+        left: auto;
+        width: auto;
+        min-width: 180px;
+        max-width: 210px;
+        margin: 0;
+        background: #ffffff;
         backdrop-filter: var(--glass-blur-strong);
         flex-direction: column;
         align-items: stretch;
-        padding: 18px;
-        box-shadow: var(--shadow-lg);
-        transition: var(--transition);
-        border-radius: var(--radius-lg);
+        padding: 6px;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18), 0 4px 14px rgba(15, 23, 42, 0.08);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        border-radius: 14px;
         border: 1px solid var(--glass-border);
-        gap: 6px;
+        gap: 2px;
+        height: auto;
+        max-height: 70vh;
+        overflow-y: auto;
+        z-index: 1001;
+        transform-origin: top right;
+        transform: scale(0.92) translateY(-6px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .nav-menu.active {
-        left: 0;
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
-    .nav-link { justify-content: center; }
+    /* Dim & lock the page behind the menu while it's open */
+    body.nav-open {
+        overflow: hidden;
+    }
+
+    body.nav-open::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+        animation: navBackdropFade 0.25s ease;
+    }
+
+    @keyframes navBackdropFade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-item + .nav-item {
+        border-top: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .nav-link {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 9px 12px;
+        border-radius: 9px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        gap: 9px;
+        white-space: nowrap;
+    }
+
+    .nav-link i {
+        width: 15px;
+        font-size: 0.82rem;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .nav-link:not(.active) {
+        background: rgba(148, 163, 184, 0.06);
+    }
+
+    .nav-link:hover:not(.active) {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    }
 
     .hamburger {
         display: flex;
@@ -3069,4 +3142,208 @@ h1, h2, h3, h4, h5 {
     }
 
     .experience-badge h3 { font-size: 2.2rem; }
+}
+
+/* ========================================
+   FULL MOBILE RESPONSIVE PATCH
+   Melengkapi seluruh tampilan agar rapi
+   di semua ukuran layar mobile
+   ======================================== */
+
+/* Safety net: gambar tidak pernah melebihi lebar kontainernya */
+img { max-width: 100%; }
+
+/* ---- Tablet kecil / mobile besar (<=768px) ---- */
+@media (max-width: 768px) {
+    .container { width: 90%; padding: 0 12px; }
+
+    /* Header & Navbar */
+    .header { padding: 16px 0; }
+    .header.scrolled { padding: 12px 0; }
+    .logo { font-size: 1.5rem; }
+    .logo i { font-size: 1.7rem; margin-right: 8px; }
+    .hamburger { width: 38px; height: 26px; padding: 6px; }
+
+    /* Hero */
+    .hero { padding-top: 100px; padding-bottom: 50px; min-height: auto; }
+    .hero-content { gap: 45px; }
+    .hero-subtitle { font-size: 0.85rem; padding: 7px 16px; }
+    .hero-description { font-size: 0.98rem; line-height: 1.8; }
+    .hero-social { text-align: center; }
+    .hero-social .social-icons { justify-content: center; }
+    .image-wrapper { max-width: 320px; margin: 0 auto; }
+    .profile-img { max-width: 300px; }
+    .image-badge { padding: 12px 18px; bottom: -12px; right: 4px; }
+    .badge-content h3 { font-size: 1.3rem; }
+    .badge-content p { font-size: 0.72rem; }
+    .scroll-indicator { display: none; }
+
+    /* Section header spacing */
+    .section-header { margin-bottom: 45px; }
+    .section-header::before { width: 36px; height: 36px; }
+    .section-subtitle { font-size: 0.78rem; padding: 6px 16px; }
+    .section-description { font-size: 0.95rem; padding: 0 10px; }
+
+    /* About */
+    .about-content { gap: 45px; }
+    .about-image { max-width: 320px; margin: 0 auto; }
+    .about-text { text-align: left; }
+    .about-text h3 { font-size: 1.9rem; text-align: center; }
+    .experience-badge { width: 100px; height: 100px; bottom: -12px; right: 4px; }
+    .experience-badge h3 { font-size: 2.1rem; }
+    .experience-badge span { font-size: 0.68rem; }
+    .about-info .info-grid { gap: 12px; }
+    .info-item { padding: 14px; }
+    .about-actions { justify-content: center; }
+    .about-actions .btn { flex: 1 1 auto; text-align: center; justify-content: center; }
+
+    /* Skills */
+    .skill-card { padding: 26px 22px; }
+    .skill-icon { width: 62px; height: 62px; font-size: 1.6rem; }
+    .skill-card h3 { font-size: 1.25rem; }
+
+    /* Portfolio */
+    .portfolio-filter { gap: 6px; padding: 6px; max-width: 100%; }
+    .filter-btn { padding: 9px 16px; font-size: 0.85rem; }
+    .portfolio-img { height: 220px; }
+    .portfolio-info { padding: 22px; }
+
+    /* Contact */
+    .contact-content { gap: 40px; }
+    .contact-card { padding: 20px; gap: 16px; }
+    .contact-icon { width: 54px; height: 54px; font-size: 1.3rem; }
+    .contact-social { padding: 22px; }
+    .contact-form { padding: 30px 22px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* mencegah auto-zoom di iOS Safari */
+        padding: 14px 16px 14px 48px;
+    }
+    .form-group i:first-of-type { left: 16px; }
+
+    /* Footer */
+    .footer-top { padding: 60px 0 50px; }
+    .footer-grid { gap: 36px; text-align: center; }
+    .footer-social { justify-content: center; }
+    .footer-title::after { left: 50%; transform: translateX(-50%); }
+    .footer-links a { justify-content: center; }
+    .footer-col p { text-align: center; }
+
+    /* Loading screen (3D cube) */
+    .loading-cube-container { width: 150px; height: 150px; margin-bottom: 28px; }
+    .loading-cube { width: 90px; height: 90px; }
+    .loading-cube-2 { width: 60px; height: 60px; }
+    .loading-cube-3 { width: 105px; height: 105px; }
+    .loading-cube-face { font-size: 24px; }
+    .loading-title { font-size: 22px; }
+    .loading-subtitle { font-size: 13px; }
+}
+
+/* ---- Mobile umum (<=600px) ---- */
+@media (max-width: 600px) {
+    .hero-title { font-size: 2rem; }
+    .hero-role { font-size: 1.2rem; }
+    .hero-description { font-size: 0.92rem; }
+    .hero-buttons .btn { font-size: 0.9rem; padding: 13px 24px; }
+
+    .section-title { font-size: 1.85rem; }
+    .section-description { font-size: 0.9rem; }
+
+    .about-text h3 { font-size: 1.6rem; }
+    .about-text > p { font-size: 0.95rem; }
+    .about-info .info-grid { grid-template-columns: 1fr; }
+    .about-quote { padding: 18px 20px; font-size: 0.95rem; }
+    .about-actions { flex-direction: column; }
+    .about-actions .btn { width: 100%; }
+
+    .skills-grid { gap: 20px; }
+
+    .portfolio-item { max-width: 100%; }
+    .portfolio-content h3 { font-size: 1.2rem; }
+    .portfolio-link { width: 44px; height: 44px; }
+
+    .contact-info { gap: 16px; }
+    .contact-details h3 { font-size: 1rem; }
+    .contact-details p, .contact-details a { font-size: 0.9rem; }
+    .social-links { justify-content: center; }
+    .social-link { width: 48px; height: 48px; font-size: 1.1rem; }
+
+    .footer-logo { justify-content: center; font-size: 1.6rem; }
+    .footer-about { text-align: center; }
+    .footer-bottom p { font-size: 0.82rem; }
+}
+
+/* ---- Ponsel kecil (<=420px) ---- */
+@media (max-width: 420px) {
+    .container { width: 92%; padding: 0 10px; }
+
+    .logo span:not(.dot) { display: none; }
+    .logo i { margin-right: 0; }
+
+    .hero { padding-top: 90px; }
+    .hero-title { font-size: 1.7rem; }
+    .hero-role { font-size: 1.05rem; }
+    .hero-buttons { width: 100%; }
+    .hero-buttons .btn { width: 100%; max-width: 100%; }
+
+    .image-wrapper, .about-image { max-width: 250px; }
+    .profile-img { max-width: 240px; }
+    .image-badge { padding: 10px 14px; }
+    .badge-content h3 { font-size: 1.1rem; }
+
+    .section-title { font-size: 1.55rem; }
+    .section-subtitle { font-size: 0.7rem; padding: 5px 12px; }
+
+    .experience-badge { width: 84px; height: 84px; }
+    .experience-badge h3 { font-size: 1.7rem; }
+    .experience-badge span { font-size: 0.6rem; }
+
+    .info-item { flex-direction: column; text-align: center; gap: 8px; }
+    .info-item::before { display: none; }
+
+    .skill-card { padding: 22px 18px; }
+    .skill-card h3 { font-size: 1.15rem; }
+    .skill-card > p { font-size: 0.9rem; }
+
+    .portfolio-tags span { font-size: 0.72rem; padding: 5px 12px; }
+    .portfolio-info h3 { font-size: 1.1rem; }
+    .portfolio-img { height: 190px; }
+
+    .contact-card { flex-direction: column; text-align: center; }
+    .contact-form { padding: 24px 16px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { padding-left: 44px; }
+
+    .whatsapp-float { padding: 10px 12px; }
+    .back-to-top { width: 42px; height: 42px; font-size: 0.9rem; }
+
+    .loading-cube-container { width: 120px; height: 120px; }
+    .loading-cube { width: 72px; height: 72px; }
+    .loading-cube-2 { width: 48px; height: 48px; }
+    .loading-cube-3 { width: 84px; height: 84px; }
+    .loading-title { font-size: 18px; }
+    .loading-subtitle { font-size: 11px; letter-spacing: 1px; }
+    .loading-progress { width: 160px; }
+}
+
+/* ---- Orientasi landscape di HP (layar pendek) ---- */
+@media (max-height: 480px) and (orientation: landscape) {
+    .hero { min-height: auto; padding-top: 90px; padding-bottom: 30px; }
+    .scroll-indicator { display: none; }
+    .loading-cube-container { width: 110px; height: 110px; margin-bottom: 16px; }
+    .loading-cube { width: 66px; height: 66px; }
+}
+
+/* ---- Perbaikan sentuh (touch) untuk kartu portofolio ---- */
+@media (hover: none) and (pointer: coarse) {
+    .portfolio-item:active .portfolio-overlay,
+    .portfolio-item:focus-within .portfolio-overlay {
+        opacity: 1;
+    }
+    .portfolio-item:active .portfolio-content,
+    .portfolio-item:focus-within .portfolio-content {
+        transform: translateY(0);
+    }
 }

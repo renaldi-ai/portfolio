@@ -719,7 +719,7 @@ h1, h2, h3, h4, h5 {
     font-size: 1.2rem;
     box-shadow: var(--shadow-glow-blue);
     transition: var(--transition-bounce);
-    z-index: 99;
+    z-index: 9998;
     opacity: 0;
     visibility: hidden;
     background-size: 200% 200%;
@@ -751,12 +751,11 @@ h1, h2, h3, h4, h5 {
     gap: 10px;
     box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4), 0 0 30px rgba(37, 211, 102, 0.2);
     transition: var(--transition-bounce);
-    z-index: 98;
+    z-index: 9997;
     font-weight: 600;
     font-size: 0.9rem;
     border: 1px solid rgba(255,255,255,0.2);
     overflow: hidden;
-    position: relative;
 }
 
 .whatsapp-float::before {

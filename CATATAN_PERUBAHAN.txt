@@ -1,0 +1,72 @@
+CATATAN PERUBAHAN - Portfolio Renaldi Yoga Pratama
+=====================================================
+
+1. FORM KONTAK -> EmailJS (SUDAH SELESAI DISETUP)
+   File: index.html, script.js
+   Form kontak sudah pindah dari PHP ke EmailJS dan SUDAH diisi dengan ID asli:
+   - Public Key : c3RmaogszcAKePr4M
+   - Service ID : service_b3eacik
+   - Template ID: template_b99tcyc
+   Notifikasi form akan masuk ke: renaldiyogapratama092@gmail.com
+
+   Sebelum benar-benar publish, TES DULU form kontaknya langsung di browser
+   (buka index.html, isi form, submit, cek apakah email masuk).
+
+   Kalau nanti mau ganti akun Gmail penerima atau bikin template baru, tinggal
+   ulangi setup di dashboard EmailJS lalu ganti 3 nilai di atas.
+
+   Setelah pindah ke EmailJS, file send-email.php, config.php, test-email.php,
+   dan folder PHPMailer/ sudah TIDAK dipakai lagi -> boleh dihapus dari repo
+   biar bersih (opsional, tidak wajib, tapi lebih rapi).
+
+2. META TAG OG / TWITTER CARD
+   File: index.html
+   Ditambahkan supaya preview link (WhatsApp/LinkedIn/Twitter) muncul bagus.
+   CEK & GANTI URL berikut sesuai domain/username GitHub Pages kamu yang asli
+   (aku isi tebakan "https://renaldi-ai.github.io/portfolio/" berdasarkan
+   link GitHub di section kontak -- kalau repo/domainnya beda, tolong disesuaikan):
+   - og:url, og:image, twitter:url, twitter:image
+   - isi robots.txt (baris Sitemap) dan sitemap.xml (semua <loc>)
+
+3. ROBOTS.TXT & SITEMAP.XML
+   File baru: robots.txt, sitemap.xml
+   Sama seperti di atas, URL di dalamnya perlu disesuaikan ke domain asli.
+
+4. SECTION "CARA KERJA" & SERTIFIKAT
+   File: index.html (section #testimonials dan #certificates), style.css
+   - Section Sertifikat SUDAH diisi 7 sertifikat asli kamu:
+     1. Junior Network Administrator (2024, 67 Jam Pelatihan)
+     2. Menerapkan Rekayasa Prompt dengan Azure OpenAI Service (2025)
+     3. Cisco Dasar (berlaku s.d. 12-11-2026)
+     4. Kewirausahaan Digital Dasar (2024, 13 Jam Pelatihan)
+     5. IoT Engineer Camp - Indonesia IoT Career Fair (2024)
+     6. Seminar Nasional Ilmu Komputer / SNASIKOM 2023
+     7. Webinar Kolaborasi Merdeka Belajar Episode 26 (2023)
+     Semua lengkap dengan tombol "Lihat Sertifikat" yang membuka file PDF
+     aslinya. File PDF-nya ada di assets/docs/certificates/.
+   - Section yang tadinya "Testimoni Klien" (placeholder "Nama Klien") SUDAH
+     DIGANTI jadi "Komitmen Kerja" -> berisi prinsip kerja kamu sendiri
+     (Komunikasi Terbuka, Tepat Waktu, Dukungan Pasca-Project), BUKAN testimoni
+     palsu yang ngaku-ngaku dikutip dari klien. Kalau nanti sudah ada testimoni
+     ASLI dari klien/atasan, section ini bisa diubah balik jadi testimoni asli
+     -> tinggal kirim teksnya, tinggal ganti kontennya lagi.
+
+5. PERBAIKAN KECIL
+   - Project "Smart Garden System": ikon link kedua yang sebelumnya ke WhatsApp
+     (ikon download, tidak konsisten) diganti jadi link "external-link" ke
+     website project itu sendiri, konsisten dengan project lain.
+
+6. FAVICON / ICON WEBSITE
+   File baru: assets/favicon/ (favicon.svg, favicon.ico, favicon-16x16.png,
+   favicon-32x32.png, favicon-48x48.png, apple-touch-icon.png,
+   android-chrome-192x192.png, android-chrome-512x512.png, site.webmanifest)
+   File diubah: index.html (tag <link> favicon di bagian <head>)
+
+   Favicon lama (huruf "R" polos di kotak biru) diganti dengan desain baru:
+   gradient biru-ungu sesuai warna tema website, huruf "R", aksen garis
+   circuit di sudut dan titik hijau kecil (motif IoT/koneksi) yang cocok
+   dengan tema kamu sebagai IoT & IT specialist. Sudah termasuk semua ukuran
+   standar (browser tab, homescreen iOS, homescreen Android/PWA).
+
+   Kalau mau ganti desainnya lagi nanti, source file editable-nya ada di
+   assets/favicon/favicon.svg -> tinggal edit, lalu generate ulang PNG-nya.

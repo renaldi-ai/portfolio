@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Renaldi Yoga Pratama - Web Developer & IT Specialist dari Bengkulu">
+    <meta name="keywords" content="web developer, PHP, instalasi laptop, service komputer, Office Word, Bengkulu, IoT, Robotika">
+    <meta name="author" content="Renaldi Yoga Pratama">
+
+    <!-- Open Graph / Facebook, WhatsApp, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://renaldi-ai.github.io/portfolio/">
+    <meta property="og:title" content="Renaldi Yoga Pratama | Robotika (IoT) & IT Support Technician">
+    <meta property="og:description" content="Portfolio Renaldi Yoga Pratama - Web Developer & IT Specialist dari Bengkulu">
+    <meta property="og:image" content="https://renaldi-ai.github.io/portfolio/assets/images/profil1.jpg">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://renaldi-ai.github.io/portfolio/">
+    <meta name="twitter:title" content="Renaldi Yoga Pratama | Robotika (IoT) & IT Support Technician">
+    <meta name="twitter:description" content="Portfolio Renaldi Yoga Pratama - Web Developer & IT Specialist dari Bengkulu">
+    <meta name="twitter:image" content="https://renaldi-ai.github.io/portfolio/assets/images/profil1.jpg">
+
+    <title>Renaldi Yoga Pratama | Robotika (IoT) & IT Support Technician</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon/favicon-48x48.png">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* 3D Cube Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a1425, #0f172a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader-enhanced {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .loading-cube-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            perspective: 1200px;
+        }
+
+        .loading-cube {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            animation: rotateCube 6s linear infinite;
+        }
+
+        .loading-cube-2 {
+            width: 80px;
+            height: 80px;
+            animation: rotateCubeReverse 8s linear infinite;
+            animation-delay: 1s;
+            opacity: 0.7;
+        }
+
+        .loading-cube-3 {
+            width: 140px;
+            height: 140px;
+            animation: rotateCubeDiagonal 10s linear infinite;
+            animation-delay: 2s;
+            opacity: 0.4;
+        }
+
+        @keyframes rotateCube {
+            0% { transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translate(-50%, -50%) rotateX(90deg) rotateY(90deg); }
+            50% { transform: translate(-50%, -50%) rotateX(180deg) rotateY(180deg); }
+            75% { transform: translate(-50%, -50%) rotateX(270deg) rotateY(270deg); }
+            100% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg); }
+        }
+
+        @keyframes rotateCubeReverse {
+            0% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg); }
+            100% { transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg); }
+        }
+
+        @keyframes rotateCubeDiagonal {
+            0% { transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+
+        .loading-cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.9), rgba(139, 92, 246, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
+        }
+
+        .loading-cube-2 .loading-cube-face {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(245, 158, 11, 0.7));
+        }
+
+        .loading-cube-3 .loading-cube-face {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.5), rgba(245, 158, 11, 0.5));
+        }
+
+        .loading-cube-face.front  { transform: rotateY(0deg) translateZ(60px); }
+        .loading-cube-face.back   { transform: rotateY(180deg) translateZ(60px); }
+        .loading-cube-face.right  { transform: rotateY(90deg) translateZ(60px); }
+        .loading-cube-face.left   { transform: rotateY(-90deg) translateZ(60px); }
+        .loading-cube-face.top    { transform: rotateX(90deg) translateZ(60px); }
+        .loading-cube-face.bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+        .loading-cube-2 .loading-cube-face.front  { transform: rotateY(0deg) translateZ(40px); }
+        .loading-cube-2 .loading-cube-face.back   { transform: rotateY(180deg) translateZ(40px); }
+        .loading-cube-2 .loading-cube-face.right  { transform: rotateY(90deg) translateZ(40px); }
+        .loading-cube-2 .loading-cube-face.left   { transform: rotateY(-90deg) translateZ(40px); }
+        .loading-cube-2 .loading-cube-face.top    { transform: rotateX(90deg) translateZ(40px); }
+        .loading-cube-2 .loading-cube-face.bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+        .loading-cube-3 .loading-cube-face.front  { transform: rotateY(0deg) translateZ(70px); }
+        .loading-cube-3 .loading-cube-face.back   { transform: rotateY(180deg) translateZ(70px); }
+        .loading-cube-3 .loading-cube-face.right  { transform: rotateY(90deg) translateZ(70px); }
+        .loading-cube-3 .loading-cube-face.left   { transform: rotateY(-90deg) translateZ(70px); }
+        .loading-cube-3 .loading-cube-face.top    { transform: rotateX(90deg) translateZ(70px); }
+        .loading-cube-3 .loading-cube-face.bottom { transform: rotateX(-90deg) translateZ(70px); }
+
+        .loading-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.5));
+                background-position: 0% 50%;
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8));
+                background-position: 100% 50%;
+            }
+        }
+
+        .loading-subtitle {
+            font-size: 16px;
+            color: #64748b;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+            border-radius: 10px;
+            animation: progressLoad 4s ease-in-out forwards;
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            30% { width: 30%; }
+            60% { width: 70%; }
+            90% { width: 95%; }
+            100% { width: 100%; }
+        }
+
+        .loading-status {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Loading Screen with 3D Cube -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-enhanced">
+            <div class="loading-cube-container">
+                <!-- Main Cube -->
+                <div class="loading-cube">
+                    <div class="loading-cube-face front"><i class="fas fa-code"></i></div>
+                    <div class="loading-cube-face back"><i class="fas fa-laptop"></i></div>
+                    <div class="loading-cube-face right"><i class="fas fa-microchip"></i></div>
+                    <div class="loading-cube-face left"><i class="fas fa-robot"></i></div>
+                    <div class="loading-cube-face top"><i class="fas fa-cog"></i></div>
+                    <div class="loading-cube-face bottom"><i class="fas fa-tools"></i></div>
+                </div>
+                
+                <!-- Secondary Cube -->
+                <div class="loading-cube loading-cube-2">
+                    <div class="loading-cube-face front"><i class="fas fa-database"></i></div>
+                    <div class="loading-cube-face back"><i class="fas fa-cloud"></i></div>
+                    <div class="loading-cube-face right"><i class="fas fa-server"></i></div>
+                    <div class="loading-cube-face left"><i class="fas fa-network-wired"></i></div>
+                    <div class="loading-cube-face top"><i class="fas fa-shield-alt"></i></div>
+                    <div class="loading-cube-face bottom"><i class="fas fa-bolt"></i></div>
+                </div>
+                
+                <!-- Tertiary Cube -->
+                <div class="loading-cube loading-cube-3">
+                    <div class="loading-cube-face front"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="loading-cube-face back"><i class="fas fa-globe"></i></div>
+                    <div class="loading-cube-face right"><i class="fas fa-palette"></i></div>
+                    <div class="loading-cube-face left"><i class="fas fa-chart-line"></i></div>
+                    <div class="loading-cube-face top"><i class="fas fa-lightbulb"></i></div>
+                    <div class="loading-cube-face bottom"><i class="fas fa-rocket"></i></div>
+                </div>
+            </div>
+
+            <h2 class="loading-title">Renaldi Yoga Pratama</h2>
+            <p class="loading-subtitle">Loading Portfolio</p>
+            
+            <div class="loading-progress">
+                <div class="loading-progress-bar" id="loadingProgressBar"></div>
+            </div>
+            <p class="loading-status" id="loadingStatus">Memuat konten...</p>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/62895406398540" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat WhatsApp</span>
+    </a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Renaldi<span class="dot">.</span></span>
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">
+                            <i class="fas fa-user"></i> Tentang
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">
+                            <i class="fas fa-tools"></i> Keahlian
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">
+                            <i class="fas fa-briefcase"></i> Portofolio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">
+                            <i class="fas fa-comment-dots"></i> Cara Kerja
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <i class="fas fa-envelope"></i> Kontak
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h4 class="hero-subtitle">Halo, Saya</h4>
+                    <h1 class="hero-title">Renaldi <span class="highlight">Yoga Pratama</span></h1>
+                    <h2 class="hero-role">
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="cursor">|</span>
+                    </h2>
+                    <p class="hero-description">
+                        Spesialis dalam pembuatan website dengan <strong>PHP murni</strong>, instalasi laptop & software, service komputer, pengolahan dokumen Office Word, dan pengembangan sistem IoT dari Bengkulu, Indonesia.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary">
+                            <i class="fas fa-eye"></i> Lihat Portofolio
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Hubungi Saya
+                        </a>
+                    </div>
+
+                    <div class="hero-social">
+                        <p>Follow Saya:</p>
+                        <div class="social-icons">
+                            <a href="https://github.com/renaldi-ai" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/renaldi-yoga-pratama-01644b2b2/" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ryogapratama21/" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/renaldi.y.p.5" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image" data-aos="fade-left">
+                    <div class="image-wrapper">
+                        <img src="assets/images/profil1.jpg" alt="Renaldi Yoga Pratama" class="profile-img">
+                        <div class="image-badge">
+                            <div class="badge-content">
+                                <h3>6+</h3>
+                                <p>Projek Selesai</p>
+                            </div>
+                        </div>
+                        <div class="floating-element elem-1">
+                            <i class="fab fa-php"></i>
+                        </div>
+                        <div class="floating-element elem-2">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="floating-element elem-3">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="floating-element elem-4">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <a href="#about">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Gulir ke Bawah</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Tentang Saya</span>
+                <h2 class="section-title">Profil <span class="highlight">Pengenalan</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Mengenal lebih dekat latar belakang dan pengalaman saya</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="image-container">
+                        <img src="assets/images/profil1.jpg" 
+                             alt="Renaldi Bekerja" class="about-img">
+                    </div>
+                </div>
+
+                <div class="about-text" data-aos="fade-left">
+                    <h3>Teknisi & Spesialis Robotika (IoT)</h3>
+                    <p>Saya adalah seorang profesional IT dengan spesialisasi dalam pengembangan web menggunakan <strong>PHP native</strong>, layanan IT support, instalasi hardware/software, dan pengembangan sistem IoT untuk berbagai kebutuhan industri dan bisnis.</p>
+
+                    <div class="about-info">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4>Nama Lengkap</h4>
+                                    <p>Renaldi Yoga Pratama</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>renaldiyogapratama092@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4>Telepon/WA</h4>
+                                    <p>0895-4063-98540</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Lokasi</h4>
+                                    <p>Bengkulu, Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4>Pendidikan</h4>
+                                    <p>S1 Rekayasa Sistem Komputer</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <h4>Status</h4>
+                                    <p class="available">Tersedia untuk Projek</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-quote">
+                        <p>"Saya berkomitmen untuk memberikan solusi teknologi yang tepat, efisien, dan sesuai dengan kebutuhan. Setiap proyek adalah kesempatan untuk menciptakan nilai tambah dan memberikan dampak positif."</p>
+                    </div>
+
+                    <div class="about-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Hubungi Saya
+                        </a>
+                        <a href="assets/docs/cv-renaldi.pdf" class="btn btn-secondary" download>
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section-padding" id="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Keahlian</span>
+                <h2 class="section-title">Bidang <span class="highlight">Keahlian</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Keterampilan teknis yang saya kuasai untuk memberikan solusi terbaik</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3>PHP Murni Development</h3>
+                    <p>Membangun website dinamis dengan PHP native tanpa framework, dari yang sederhana hingga kompleks dengan database MySQL, sistem CRUD, dan keamanan optimal.</p>
+                </div>
+                <!-- Skill 2 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Instalasi Laptop & PC</h3>
+                    <p>Instalasi sistem operasi Windows, driver, dan konfigurasi hardware untuk performa optimal, termasuk troubleshooting hardware dan optimisasi sistem.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Instalasi Software</h3>
+                    <p>Instalasi berbagai software kebutuhan kantor, dan utilitas dengan konfigurasi optimal, lisensi, dan troubleshooting.</p>
+
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>Microsoft Office Word</h3>
+                    <p>Pengolahan dokumen: laporan, proposal, makalah, dengan format yang rapi, dan sesuai standar.</p>
+
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Service Komputer Ringan</h3>
+                    <p>Perbaikan masalah software, troubleshooting, cleaning virus, optimisasi sistem, maintenance rutin, dan upgrade hardware.</p>
+
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Robotika & IoT Development</h3>
+                    <p>Pengembangan sistem Internet of Things (IoT), pemrograman mikrokontroler, sensor integration, dan pembuatan aplikasi kontrol berbasis web.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio section-padding" id="portfolio">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Karya Terbaik</span>
+                <h2 class="section-title">Portofolio <span class="highlight">Proyek</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Beberapa proyek yang telah saya selesaikan dengan hasil memuaskan</p>
+            </div>
+
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="IoT">IoT & Robotika</button>
+                <button class="filter-btn" data-filter="Web">Website</button>
+                <button class="filter-btn" data-filter="IT">IT Support</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 - Layananku -->
+                <div class="portfolio-item" data-category="Web" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project1.jpeg" alt="Layananku - Website Layanan">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>Layananku.biz.id</h3>
+                                <p>Website Platform Layanan</p>
+                                <div class="portfolio-links">
+                                    <a href="https://layananku.biz.id/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://layananku.biz.id/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>LAYANANKU BIZ ID</h3>
+                        <p>Platform website layanan berbasis PHP untuk manajemen dan pemesanan layanan online secara profesional.</p>
+                        <div class="portfolio-tags">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Website</span>
+                            <span>Production</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Ruang Otomasi -->
+                <div class="portfolio-item" data-category="Web" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project2.jpeg" alt="Ruang Otomasi - IoT & Robotika">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>RuangOtomasi.my.id</h3>
+                                <p>IoT & Automation Portal</p>
+                                <div class="portfolio-links">
+                                    <a href="https://ruangotomasi.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://ruangotomasi.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>RUANG OTOMASI</h3>
+                        <p>Portal website khusus IoT & Robotika, menyediakan informasi dan solusi otomasi berbasis teknologi terkini.</p>
+                        <div class="portfolio-tags">
+                            <span>IoT</span>
+                            <span>Robotika</span>
+                            <span>PHP</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Sistem Absensi Karyawan -->
+                <div class="portfolio-item" data-category="IoT" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project3.jpeg" alt="Sistem Absensi Karyawan SDIT Insan Madani">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>Sistem Absensi Karyawan</h3>
+                                <p>IoT + Website PHP</p>
+                                <div class="portfolio-links">
+                                    <a href="https://sditinsanmadani.biz.id/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://sditinsanmadani.biz.id/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>SISTEM ABSENSI KARYAWAN SDIT</h3>
+                        <p>Sistem absensi karyawan otomatis berbasis IoT dengan website SDIT Insan Madani untuk pencatatan kehadiran real-time.</p>
+                        <div class="portfolio-tags">
+                            <span>IoT</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>RFID</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Smart Garden -->
+                <div class="portfolio-item" data-category="IoT" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project4.jpeg" alt="Smart Garden System">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>Smart Garden System</h3>
+                                <p>IoT Plant Monitoring</p>
+                                <div class="portfolio-links">
+                                    <a href="https://ruangotomasi.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://ruangotomasi.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>SMART GARDEN IoT</h3>
+                        <p>Sistem penyiraman tanaman otomatis berbasis sensor kelembaban tanah dengan kontrol dan monitoring via web dashboard.</p>
+                        <div class="portfolio-tags">
+                            <span>IoT</span>
+                            <span>PHP</span>
+                            <span>Sensor</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Monitoring Ikan Lele -->
+                <div class="portfolio-item" data-category="IoT" data-aos="fade-up" data-aos-delay="500">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project5.jpeg" alt="Monitoring Ikan Lele - IoT Aquaculture">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>MonitoringIkanLele.my.id</h3>
+                                <p>IoT Smart Aquaculture</p>
+                                <div class="portfolio-links">
+                                    <a href="https://monitoringikanlele.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://monitoringikanlele.my.id/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>MONITORING IKAN LELE IoT</h3>
+                        <p>Sistem monitoring budidaya ikan lele berbasis IoT dengan real-time data sensor kualitas air (pH, suhu, oksigen) dan dashboard website.</p>
+                        <div class="portfolio-tags">
+                            <span>IoT</span>
+                            <span>PHP</span>
+                            <span>Sensor</span>
+                            <span>Aquaculture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Irigasi Cerdas -->
+                <div class="portfolio-item" data-category="IoT" data-aos="fade-up" data-aos-delay="600">
+                    <div class="portfolio-img">
+                        <img src="assets/images/project6.jpeg" alt="Irigasi Cerdas - Smart Irrigation System">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3>IrigasiCerdas.net</h3>
+                                <p>IoT Smart Irrigation</p>
+                                <div class="portfolio-links">
+                                    <a href="https://irigasicerdas.net/" target="_blank" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                                    <a href="https://irigasicerdas.net/" target="_blank" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>IRIGASI CERDAS IoT</h3>
+                        <p>Sistem irigasi otomatis cerdas berbasis IoT dengan sensor kelembaban tanah, kontrol pompa air remote, dan monitoring real-time via web dashboard.</p>
+                        <div class="portfolio-tags">
+                            <span>IoT</span>
+                            <span>PHP</span>
+                            <span>Sensor</span>
+                            <span>Agriculture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" data-aos="fade-up">
+                <a href="#contact" class="btn btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i> Mulai Proyek Bersama Saya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Approach Section -->
+    <section class="testimonials section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Cara Kerja Saya</span>
+                <h2 class="section-title">Komitmen <span class="highlight">Kerja</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Prinsip yang saya pegang setiap mengerjakan project</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-comments testimonial-quote-icon"></i>
+                    <p class="testimonial-text">Komunikasi jelas dari awal hingga akhir project — progres dilaporkan berkala, dan setiap kendala teknis disampaikan apa adanya, bukan ditutup-tutupi.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-comment-dots"></i></div>
+                        <div>
+                            <h4>Komunikasi Terbuka</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-clock testimonial-quote-icon"></i>
+                    <p class="testimonial-text">Estimasi waktu pengerjaan disampaikan realistis di awal, dan saya usahakan selesai sesuai target — kalau ada kendala yang bikin mundur, langsung diinfokan lebih dulu.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-stopwatch"></i></div>
+                        <div>
+                            <h4>Tepat Waktu</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-life-ring testimonial-quote-icon"></i>
+                    <p class="testimonial-text">Dukungan tidak berhenti setelah project selesai — siap dihubungi untuk perbaikan bug atau pertanyaan teknis terkait hasil pekerjaan.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h4>Dukungan Pasca-Project</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates section-padding" id="certificates">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Kualifikasi</span>
+                <h2 class="section-title">Sertifikat & <span class="highlight">Pelatihan</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Sertifikasi dan pelatihan yang telah saya ikuti</p>
+            </div>
+
+            <div class="certificate-grid">
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="certificate-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Junior Network Administrator</h3>
+                    <p>Digital Talent Scholarship - BPPTIK Cikarang, Kominfo</p>
+                    <span class="certificate-year">2024 &middot; 67 Jam Pelatihan</span>
+                    <a href="assets/docs/certificates/junior-network-administrator.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="certificate-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Menerapkan Rekayasa Prompt dengan Azure OpenAI Service</h3>
+                    <p>Digital Talent Scholarship - Pusbang Ekosistem SDM Komdigi &amp; Microsoft</p>
+                    <span class="certificate-year">2025 &middot; 1.4 Jam Pelatihan</span>
+                    <a href="assets/docs/certificates/azure-openai-prompt-engineering.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Cisco Dasar</h3>
+                    <p>ID-Networkers (IDN.ID) - LMS.IDN.ID</p>
+                    <span class="certificate-year">Berlaku s.d. 12-11-2026</span>
+                    <a href="assets/docs/certificates/cisco-dasar.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="certificate-icon"><i class="fas fa-store"></i></div>
+                    <h3>Kewirausahaan Digital Dasar</h3>
+                    <p>Digital Entrepreneurship Academy - BPPTIK Cikarang, Kominfo</p>
+                    <span class="certificate-year">2024 &middot; 13 Jam Pelatihan</span>
+                    <a href="assets/docs/certificates/kewirausahaan-digital-dasar.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="certificate-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>IoT Engineer Camp - Indonesia IoT Career Fair</h3>
+                    <p>MSIB 6 Kampus Merdeka x Indobot Academy</p>
+                    <span class="certificate-year">2024 &middot; Peserta</span>
+                    <a href="assets/docs/certificates/iot-engineer-camp-iicf-2024.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="certificate-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Seminar Nasional Ilmu Komputer (SNASIKOM) 2023</h3>
+                    <p>"Ancaman AI Terhadap Profesi di Bidang IT" - Universitas Dehasen Bengkulu</p>
+                    <span class="certificate-year">2023 &middot; Peserta</span>
+                    <a href="assets/docs/certificates/snasikom-2023.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+
+                <div class="certificate-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="certificate-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Webinar Kolaborasi Merdeka Belajar Episode 26</h3>
+                    <p>Komunitas Pemuda Pelajar Merdeka x Kemendikbudristek &amp; BEM UNESA</p>
+                    <span class="certificate-year">2023 &middot; Peserta</span>
+                    <a href="assets/docs/certificates/webinar-merdeka-belajar-ep26.pdf" target="_blank" class="certificate-link">
+                        <i class="fas fa-file-pdf"></i> Lihat Sertifikat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Hubungi Saya</span>
+                <h2 class="section-title">Mari <span class="highlight">Bekerja Sama</span></h2>
+                <div class="section-line"></div>
+                <p class="section-description">Siap membantu menyelesaikan masalah teknologi Anda. Konsultasi gratis!</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Lokasi</h3>
+                            <p>Bengkulu, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>renaldiyogapratama092@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telepon/WhatsApp</h3>
+                            <p>0895-4063-98540</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h3>Follow & Connect</h3>
+                        <div class="social-links">
+                            <a href="https://wa.me/62895406398540" target="_blank" class="social-link whatsapp" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://github.com/renaldi-ai" target="_blank" class="social-link github" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/renaldi-yoga-pratama-01644b2b2/" target="_blank" class="social-link linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ryogapratama21/" target="_blank" class="social-link instagram" title="Instagram Pribadi">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ruangotomasi/" target="_blank" class="social-link iot" title="Instagram Ruang Otomasi">
+                                <i class="fas fa-microchip"></i>
+                            </a>
+                            <a href="mailto:renaldiyogapratama092@gmail.com" class="social-link email" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Nama Lengkap" required>
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Alamat Email" required>
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subjek" required>
+                            <i class="fas fa-tag"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <select name="service" required>
+                                <option value="" disabled selected>Pilih Layanan</option>
+                                <option value="web-development">Pembuatan Website PHP</option>
+                                <option value="installation">Instalasi Laptop/PC</option>
+                                <option value="software-install">Instalasi Software</option>
+                                <option value="office-word">Jasa Office Word</option>
+                                <option value="iot-development">Pengembangan IoT & Robotika</option>
+                            </select>
+                            <i class="fas fa-cogs"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Detail kebutuhan Anda..." rows="6" required></textarea>
+                            <i class="fas fa-comment"></i>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+
+                        <div id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Renaldi<span class="dot">.</span></span>
+                        </div>
+                        <p class="footer-about">
+                            Menciptakan solusi inovatif di bidang robotika, IoT, Instalasi Windows dan pengembangan web.
+                        </p>
+                        <div class="footer-social">
+                            <a href="https://wa.me/62895406398540" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/renaldi.y.p.5" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://github.com/renaldi-ai" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/ryogapratama21/" target="_blank" title="Instagram Pribadi"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/ruangotomasi/" target="_blank" title="Instagram Ruang Otomasi"><i class="fas fa-microchip"></i></a>
+                            <a href="https://www.linkedin.com/in/renaldi-yoga-pratama-01644b2b2/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-title">Menu Cepat</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">Tentang Saya</a></li>
+                            <li><a href="#skills">Keahlian</a></li>
+                            <li><a href="#portfolio">Portofolio</a></li>
+                            <li><a href="#contact">Kontak</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3 class="footer-title">Layanan</h3>
+                        <ul class="footer-links">
+                            <li><a href="#skills">Pembuatan Website PHP</a></li>
+                            <li><a href="#skills">Instalasi Laptop & Komputer</a></li>
+                            <li><a href="#skills">Service & Perawatan Komputer</a></li>
+                            <li><a href="#skills">Pengembangan IoT & Robotika</a></li>
+                            <li><a href="#skills">Pengolahan Dokumen Office Word</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3 class="footer-title">Hubungi Tim Kami</h3>
+                        <p style="color:rgba(255,255,255,0.65); margin-bottom:20px; line-height:1.8;">
+                            Tim support kami siap membantu kebutuhan proyek & layanan Anda.
+                        </p>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="mailto:support@ruangotomasi.my.id">
+                                    <i class="fas fa-envelope" style="margin-right:8px;"></i>
+                                    support@ruangotomasi.my.id
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:support@layananku.biz.id">
+                                    <i class="fas fa-envelope" style="margin-right:8px;"></i>
+                                    support@layananku.biz.id
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/62881022102960" target="_blank">
+                                    <i class="fab fa-whatsapp" style="margin-right:8px;"></i>
+                                    0881-0221-02960 (Tim)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" style="font-weight:600;">
+                                    <i class="fas fa-user-tie" style="margin-right:8px;"></i>
+                                    Kontak Pribadi →
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; <span id="currentYear"></span> <span class="highlight-copy">Renaldi Yoga Pratama</span>. All rights reserved.</p>
+                    <p>
+                        <i class="fas fa-users" style="margin-right:6px;"></i>
+                        <strong>Tim:</strong> support@ruangotomasi.my.id · support@layananku.biz.id · WA 0881-0221-02960
+                    </p>
+                    <p class="footer-credits">
+                        Designed with <i class="fas fa-heart" style="color:#ec4899;"></i> by Renaldi Yoga Pratama · Bengkulu, Indonesia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- EmailJS SDK - untuk kirim form kontak tanpa backend PHP (GitHub Pages friendly) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init('c3RmaogszcAKePr4M');
+    </script>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            disable: window.innerWidth < 768
+        });
+
+        // 3D Cube Loading Screen Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const progressBar = document.getElementById('loadingProgressBar');
+            const loadingStatus = document.getElementById('loadingStatus');
+            
+            let progress = 0;
+            const statusMessages = [
+                "Memuat sistem 3D...",
+                "Menyiapkan animasi...",
+                "Inisialisasi komponen...",
+                "Mengoptimalkan performa...",
+                "Hampir selesai...",
+                "Siap!"
+            ];
+            
+            function simulateLoading() {
+                if (progress < 100) {
+                    progress += Math.random() * 5 + 1;
+                    if (progress > 100) progress = 100;
+                    
+                    progressBar.style.width = progress + '%';
+                    
+                    // Update status message based on progress
+                    if (progress < 20) {
+                        loadingStatus.textContent = statusMessages[0];
+                    } else if (progress < 40) {
+                        loadingStatus.textContent = statusMessages[1];
+                    } else if (progress < 60) {
+                        loadingStatus.textContent = statusMessages[2];
+                    } else if (progress < 80) {
+                        loadingStatus.textContent = statusMessages[3];
+                    } else if (progress < 95) {
+                        loadingStatus.textContent = statusMessages[4];
+                    } else {
+                        loadingStatus.textContent = statusMessages[5];
+                    }
+                    
+                    setTimeout(simulateLoading, 50 + Math.random() * 50);
+                } else {
+                    // Loading complete
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        loadingScreen.style.visibility = 'hidden';
+                    }, 500);
+                }
+            }
+            
+            // Start loading simulation
+            setTimeout(simulateLoading, 500);
+        });
+    </script>
+</body>
+</html>
